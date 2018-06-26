@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record model="openacademy.course" id="course1">
+            <field name="course">course1</field>
+            <field name="description">cource1 description
+            This can be of multiple lines
+            </field>
+        </record>
+
+        <record model="openacademy.course" id="course2">
+            <field name="course">course2</field>
+            <field name="description">cource2 description
+            This can be of multiple lines
+            </field>
+        </record>
+
+        <record model="openacademy.course" id="course3">
+            <field name="course">course3</field>
+            <field name="description">cource3 descriptionThis can be of multiple lines</field>
+        </record>
+    </data>
+</odoo>

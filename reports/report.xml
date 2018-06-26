@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record id="paperformat_new" model="report.paperformat">
+            <field name="name">customized paperformat</field>
+            <field name="format">custom</field>
+            <field name="page_height">80</field>
+            <field name="page_width">200</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">3</field>
+            <field name="margin_bottom">3</field>
+            <field name="margin _left">3</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="True"/>
+            <field name="header_spacing">2</field>
+            <field name="dpi">800</field>
+        </record>
+
+        <report id="report_session"
+                model="openacademy.session"
+                string="Session Report"
+                name="dummy.report_session_view"
+                report_type="qweb-pdf"
+                attachment_use="True"
+                paperformat="paperformat_new"
+                menu="True"/>
+
+        <template id="report_session_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <p/>
+                            <p/>
+                            <p/>
+                            <h2 t-field="doc.name"/>
+                            <p>From:<span t-field="doc.start_date"/></p>
+                            <p>Duration<span t-field="doc.duration"/></p>
+                            <h3>Attendees:</h3>
+                            <ul>
+                                <t t-foreach="doc.attendee_ids" t-as="attendee">
+                                    <li><span t-field="attendee.name"/></li>
+                                    <li><span t-esc="attendee"/></li>
+                                </t>
+                            </ul>
+                            <t t-set="foo" t-value="45"/>
+                            <t t-raw="foo"/>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
